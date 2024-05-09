@@ -1,4 +1,4 @@
-package com.company.product.services.school;
+package com.company.product.services.school.service;
 
 import com.company.product.services.school.model.Student;
 import com.company.product.services.school.repository.StudentRepository;

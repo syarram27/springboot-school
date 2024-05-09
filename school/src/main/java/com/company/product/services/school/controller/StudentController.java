@@ -1,6 +1,6 @@
 package com.company.product.services.school.controller;
 
-import com.company.product.services.school.StudentService;
+import com.company.product.services.school.service.StudentService;
 import com.company.product.services.school.model.Student;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
