@@ -21,17 +21,17 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "student")
 public class Student {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-        private String name;
-        private int age;
-        private String address;
-        private int studentClass;
-        private LocalDate dateOfBirth;
-        private LocalDate joiningDate;
-        private LocalDateTime createdAt;
-        private LocalDateTime updatedAt;
+    private String name;
+    private int age;
+    private String address;
+    private int studentClass;
+    private LocalDate dateOfBirth;
+    private LocalDate joiningDate;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
 }

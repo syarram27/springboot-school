@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,38 +21,38 @@ public class StudentService {
 
     private final StudentRepository studentRepo;
 
-    public List<Student> getAllStudents(){
+    public List<Student> getAllStudents() {
         return studentRepo.findAll();
     }
 
-    public Student getStudentById(Long id){
+    public Student getStudentById(Long id) {
         Optional<Student> optionalStudent = studentRepo.findById(id);
-        if(optionalStudent.isPresent()){
+        if (optionalStudent.isPresent()) {
             return optionalStudent.get();
         }
         log.info("Student with id: {} doesn't exist", id);
         return null;
     }
 
-    public List<Student> getStudentByName(String name){
+    public List<Student> getStudentByName(String name) {
         List<Student> studentRepoByName = studentRepo.findByName(name);
-        if(!CollectionUtils.isEmpty(studentRepoByName)){
+        if (!CollectionUtils.isEmpty(studentRepoByName)) {
             return studentRepoByName;
         }
         log.info("Student with name: {} doesn't exist", name);
         return null;
     }
 
-    public List<Student> getStudentByClass(int studentClass){
+    public List<Student> getStudentByClass(int studentClass) {
         List<Student> repoByStudentClass = studentRepo.findByStudentClass(studentClass);
-        if(!CollectionUtils.isEmpty(repoByStudentClass)){
+        if (!CollectionUtils.isEmpty(repoByStudentClass)) {
             return repoByStudentClass;
         }
         log.info("Students with class: {} doesn't exist in the school", studentClass);
         return null;
     }
 
-    public Student saveStudent (Student student){
+    public Student saveStudent(Student student) {
         student.setCreatedAt(LocalDateTime.now());
         student.setUpdatedAt(LocalDateTime.now());
         Student savedStudent = studentRepo.save(student);
@@ -62,10 +61,10 @@ public class StudentService {
         return savedStudent;
     }
 
-    public Student updateStudent (Student student) {
+    public Student updateStudent(Student student) {
         Optional<Student> existingStudent = studentRepo.findById(student.getId());
         Student updatedStudent = null;
-        if(existingStudent.isPresent()) {
+        if (existingStudent.isPresent()) {
             student.setCreatedAt(existingStudent.get().getCreatedAt());
             student.setUpdatedAt(LocalDateTime.now());
 
@@ -78,7 +77,7 @@ public class StudentService {
         return updatedStudent;
     }
 
-    public void deleteStudentById (Long id) {
+    public void deleteStudentById(Long id) {
         studentRepo.deleteById(id);
     }
 }
